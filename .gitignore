@@ -1,0 +1,53 @@
+# ==========================================
+# Python Virtual Environments
+# ==========================================
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ==========================================
+# Byte-compiled / Optimized / DLL files
+# ==========================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ==========================================
+# Caches & Temporary Files
+# ==========================================
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ==========================================
+# Machine Learning & Ultralytics Runs
+# ==========================================
+runs/
+*.log
+
+# ==========================================
+# Output & Test Results (Keep directory)
+# ==========================================
+output/*
+!output/.gitkeep
+
+# ==========================================
+# IDEs & Code Editors
+# ==========================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ==========================================
+# OS Generated Files
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
