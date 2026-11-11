@@ -55,7 +55,7 @@ DOC_BIEN_SO/
 ├── generate_samples.py            # Script sinh dữ liệu ảnh mẫu
 ├── run_app.bat                    # File khởi chạy tự động 1-click trên Windows
 ├── requirements.txt               # Danh sách thư viện phụ thuộc
-├── .gitignore                     # Cấu hình bỏ qua file rác khi đẩy lên Git
+├── .gitignore                     # Cấu hình bỏ qua file rác
 └── README.md                      # Tài liệu hướng dẫn sử dụng
 ```
 
@@ -80,15 +80,15 @@ Nếu bạn dùng Windows, chỉ cần **nhấp đúp chuột vào file `run_app
 
 #### Bước 1: Clone dự án về máy tính
 ```bash
-git clone <URL_REPOSITORY_CỦA_BẠN>
-cd DOC_BIEN_SO
+git clone https://github.com/SinhhDev/DOC_BIEN_SO_XE
+cd DOC_BIEN_SO_XE
 ```
 
 #### Bước 2: Tạo và kích hoạt môi trường ảo (Virtual Environment)
 - **Trên Windows:**
-  ```powershell
+  ```terminal
   python -m venv .venv
-  .venv\Scripts\activate
+  source .venv/Scripts/activate
   ```
 - **Trên macOS / Linux:**
   ```bash
@@ -103,32 +103,10 @@ pip install -r requirements.txt
 
 #### Bước 4: Khởi chạy phần mềm
 
-1. **Mở giao diện người dùng đồ họa (GUI Desktop):**
-   ```bash
-   python main.py --gui
-   ```
-   *(Hoặc chỉ cần gõ `python main.py`)*
-
-2. **Nhận diện trên 1 ảnh bất kỳ:**
-   ```bash
-   python main.py --image samples/sample_car_hcm.jpg --show
-   ```
-
-3. **Nhận diện hàng loạt ảnh trong một thư mục:**
-   ```bash
-   python main.py --dir samples
-   ```
-
-4. **Nhận diện thời gian thực qua Webcam:**
-   ```bash
-   python main.py --webcam
-   ```
-   *(Bấm phím `q` trên cửa sổ webcam để thoát)*
-
-5. **Nhận diện trên file Video:**
-   ```bash
-   python main.py --video duong_dan_video.mp4
-   ```
+**Mở giao diện người dùng đồ họa (GUI Desktop):**
+```bash
+python main.py
+```
 
 ---
 
