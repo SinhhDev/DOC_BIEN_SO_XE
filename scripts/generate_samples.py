@@ -133,29 +133,31 @@ def embed_plate_in_vehicle_scene(
 
 
 def generate_all_samples():
-    os.makedirs("samples", exist_ok=True)
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    samples_dir = os.path.join(project_root, "samples")
+    os.makedirs(samples_dir, exist_ok=True)
 
     print("[1/4] Đang tạo mẫu ô tô Hà Nội (30A-888.88)...")
     plate1 = create_vietnamese_plate(["30A - 888.88"], plate_type="long", width=280, height=80)
     scene1 = embed_plate_in_vehicle_scene(plate1, plate_pos=(260, 430), vehicle_color=(40, 40, 45), is_car=True)
-    cv2.imwrite("samples/sample_car_hanoi.jpg", scene1)
+    cv2.imwrite(os.path.join(samples_dir, "sample_car_hanoi.jpg"), scene1)
 
     print("[2/4] Đang tạo mẫu ô tô TP.HCM (51K-678.90)...")
     plate2 = create_vietnamese_plate(["51K - 678.90"], plate_type="long", width=290, height=82)
     scene2 = embed_plate_in_vehicle_scene(plate2, plate_pos=(255, 425), vehicle_color=(120, 30, 30), is_car=True)
-    cv2.imwrite("samples/sample_car_hcm.jpg", scene2)
+    cv2.imwrite(os.path.join(samples_dir, "sample_car_hcm.jpg"), scene2)
 
     print("[3/4] Đang tạo mẫu xe máy TP.HCM (59-F1 123.45)...")
     plate3 = create_vietnamese_plate(["59-F1", "123.45"], plate_type="square", width=210, height=150)
     scene3 = embed_plate_in_vehicle_scene(plate3, plate_pos=(295, 360), vehicle_color=(25, 25, 25), is_car=False)
-    cv2.imwrite("samples/sample_bike_hcm.jpg", scene3)
+    cv2.imwrite(os.path.join(samples_dir, "sample_bike_hcm.jpg"), scene3)
 
     print("[4/4] Đang tạo mẫu xe máy Đà Nẵng (43-B1 567.89)...")
     plate4 = create_vietnamese_plate(["43-B1", "567.89"], plate_type="square", width=210, height=150)
     scene4 = embed_plate_in_vehicle_scene(plate4, plate_pos=(295, 360), vehicle_color=(35, 60, 100), is_car=False)
-    cv2.imwrite("samples/sample_bike_danang.jpg", scene4)
+    cv2.imwrite(os.path.join(samples_dir, "sample_bike_danang.jpg"), scene4)
 
-    print("=> Hoàn tất tạo 4 ảnh mẫu trong thư mục samples/!")
+    print(f"=> Hoàn tất tạo 4 ảnh mẫu trong thư mục {samples_dir}!")
 
 
 if __name__ == "__main__":
