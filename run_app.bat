@@ -37,7 +37,7 @@ if not exist ".venv\Scripts\python.exe" (
 
 :: 2. Khởi chạy ứng dụng GUI
 echo Đang mở giao diện người dùng...
-.venv\Scripts\python.exe main.py --gui
+.venv\Scripts\python.exe src\main.py --gui
 if errorlevel 1 (
     echo.
     echo [LỖI] Gặp sự cố khi khởi chạy. Vui lòng kiểm tra log lỗi ở trên!
