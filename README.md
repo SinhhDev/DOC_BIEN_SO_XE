@@ -34,24 +34,24 @@ Hệ thống nhận diện biển số xe máy và ô tô Việt Nam tự độn
 ## 📁 Cấu trúc thư mục
 
 ```text
-DOC_BIEN_SO/
+DOC_BIEN_SO_XE/
 ├── models/
 │   ├── license_plate_detector.pt # Trọng số mô hình YOLOv8 (6.2 MB)
 │   └── .gitkeep
 ├── src/
 │   ├── __init__.py
+│   ├── app_gui.py                 # Giao diện đồ họa Desktop (Tkinter)
 │   ├── config.py                  # Cấu hình ngưỡng & từ điển 63 tỉnh thành
 │   ├── detector.py                # Bộ phát hiện biển số (YOLOv8 + OpenCV fallback)
-│   ├── preprocessor.py            # Tiền xử lý (xoay thẳng, CLAHE, nhị phân hóa)
+│   ├── logic.py                   # Chuẩn hóa biển số xe VN & sửa lỗi ngữ cảnh
+│   ├── main.py                    # Trình khởi chạy đa năng (CLI/GUI/Webcam/Video)
 │   ├── ocr_engine.py              # Nhận dạng ký tự (EasyOCR)
-│   ├── postprocessor.py           # Chuẩn hóa biển số xe VN & sửa lỗi ngữ cảnh
 │   ├── pipeline.py                # ALPR Pipeline xâu chuỗi toàn bộ quá trình
+│   ├── preprocessor.py            # Tiền xử lý (xoay thẳng, CLAHE, nhị phân hóa)
 │   └── visualizer.py              # Vẽ bounding box & nhãn tiếng Việt Unicode
-├── samples/                       # Ảnh mẫu xe ô tô và xe máy để test ngay
+├── samples/                       # Ảnh mẫu xe ô tô và xe máy (anh1.jpg -> anh5.jpg)
 ├── output/                        # Thư mục lưu kết quả nhận diện
 │   └── .gitkeep
-├── app_gui.py                     # Giao diện đồ họa Desktop (Tkinter)
-├── main.py                        # Trình khởi chạy đa năng (CLI/GUI/Webcam/Video)
 ├── generate_samples.py            # Script sinh dữ liệu ảnh mẫu
 ├── run_app.bat                    # File khởi chạy tự động 1-click trên Windows
 ├── requirements.txt               # Danh sách thư viện phụ thuộc
@@ -105,7 +105,7 @@ pip install -r requirements.txt
 
 **Mở giao diện người dùng đồ họa (GUI Desktop):**
 ```bash
-python main.py
+python src/main.py
 ```
 
 ---
