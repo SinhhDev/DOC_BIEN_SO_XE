@@ -8,10 +8,13 @@ Hệ thống nhận diện biển số xe máy và ô tô Việt Nam tự độn
 - **Phát hiện vùng biển số (License Plate Detection)**
   - Tích hợp mô hình **YOLOv8** chuyên biệt nhận diện biển số xe.
   - Tự động tải mô hình từ Hugging Face nếu chưa có sẵn trong thư mục.
+  - Thuật toán dự phòng **OpenCV Morphological & Contour Filter** khi góc chụp phức tạp.
+  - Khử trùng lặp box và tự động bắt trọn vẹn biển số 2 dòng xe máy.
 
 - **Tiền xử lý ảnh thông minh (Image Preprocessing)**
-  - Tự động cân chỉnh độ nghiêng.
-  - Tăng cường độ tương phản cục bộ và khử nhiễu.
+  - Tự động cân chỉnh độ nghiêng (*Deskew*).
+  - Tăng cường độ tương phản cục bộ (*CLAHE*) và khử nhiễu (*Bilateral Filter*).
+  - Nhị phân hóa thích ứng (*Otsu Threshold*).
 
 - **Nhận dạng ký tự (OCR Engine)**
   - Nhận diện ký tự chính xác cao bằng **EasyOCR**.
@@ -23,10 +26,38 @@ Hệ thống nhận diện biển số xe máy và ô tô Việt Nam tự độn
   - Phân loại phương tiện (Ô tô biển dài / Ô tô biển vuông / Xe máy).
 
 - **Giao diện Desktop hiện đại (Tkinter GUI)**
-
+  - Xem ảnh, video, nhận diện trực tiếp qua **Webcam/Camera**.
+  - Xem ảnh phóng to vùng cắt biển số (*Crop*) và ảnh nhị phân.
+  - Quản lý lịch sử nhận diện và xuất dữ liệu ra file **CSV/Excel**.
 
 ---
 ## 📁 Cấu trúc thư mục
+
+```text
+DOC_BIEN_SO/
+├── models/
+│   ├── license_plate_detector.pt # Trọng số mô hình YOLOv8 (6.2 MB)
+│   └── .gitkeep
+├── src/
+│   ├── __init__.py
+│   ├── config.py                  # Cấu hình ngưỡng & từ điển 63 tỉnh thành
+│   ├── detector.py                # Bộ phát hiện biển số (YOLOv8 + OpenCV fallback)
+│   ├── preprocessor.py            # Tiền xử lý (xoay thẳng, CLAHE, nhị phân hóa)
+│   ├── ocr_engine.py              # Nhận dạng ký tự (EasyOCR)
+│   ├── postprocessor.py           # Chuẩn hóa biển số xe VN & sửa lỗi ngữ cảnh
+│   ├── pipeline.py                # ALPR Pipeline xâu chuỗi toàn bộ quá trình
+│   └── visualizer.py              # Vẽ bounding box & nhãn tiếng Việt Unicode
+├── samples/                       # Ảnh mẫu xe ô tô và xe máy để test ngay
+├── output/                        # Thư mục lưu kết quả nhận diện
+│   └── .gitkeep
+├── app_gui.py                     # Giao diện đồ họa Desktop (Tkinter)
+├── main.py                        # Trình khởi chạy đa năng (CLI/GUI/Webcam/Video)
+├── generate_samples.py            # Script sinh dữ liệu ảnh mẫu
+├── run_app.bat                    # File khởi chạy tự động 1-click trên Windows
+├── requirements.txt               # Danh sách thư viện phụ thuộc
+├── .gitignore                     # Cấu hình bỏ qua file rác khi đẩy lên Git
+└── README.md                      # Tài liệu hướng dẫn sử dụng
+```
 
 ---
 ## ⚡ Hướng dẫn cài đặt
