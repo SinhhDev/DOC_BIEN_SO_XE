@@ -1,7 +1,7 @@
 from src.pipeline import ALPRPipeline
 from src.detector import PlateDetector
 from src.ocr_engine import OCREngine
-from src.postprocessor import PlatePostprocessor
+from src.logic import PlatePostprocessor
 from src.preprocessor import PlatePreprocessor
 from src.visualizer import PlateVisualizer
 

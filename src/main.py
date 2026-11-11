@@ -4,6 +4,12 @@ import argparse
 import time
 import cv2
 from pathlib import Path
+
+# Đảm bảo thư mục gốc dự án luôn nằm trong sys.path
+ROOT_DIR = Path(__file__).resolve().parent.parent
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
 from src.pipeline import ALPRPipeline
 from src.config import OUTPUT_DIR, SAMPLES_DIR
 
@@ -156,7 +162,10 @@ def main():
 
     # Nếu người dùng muốn mở GUI hoặc không truyền tham số nào
     if args.gui or len(sys.argv) == 1:
-        from app_gui import launch_gui
+        try:
+            from src.app_gui import launch_gui
+        except ImportError:
+            from app_gui import launch_gui
         launch_gui()
         return
 
@@ -173,7 +182,10 @@ def main():
         run_video(pipeline, args.video)
     else:
         print("[INFO] Không có tác vụ được chỉ định. Đang khởi chạy GUI...")
-        from app_gui import launch_gui
+        try:
+            from src.app_gui import launch_gui
+        except ImportError:
+            from app_gui import launch_gui
         launch_gui()
 
 

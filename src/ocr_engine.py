@@ -1,6 +1,6 @@
 import easyocr
 import numpy as np
-from src.postprocessor import PlatePostprocessor
+from src.logic import PlatePostprocessor
 
 
 class OCREngine:
