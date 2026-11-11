@@ -68,6 +68,70 @@ DOC_BIEN_SO/
 
 ---
 
+### Cách 1: Khởi chạy 1-Click trên Windows (Đơn giản nhất 🚀)
+Nếu bạn dùng Windows, chỉ cần **nhấp đúp chuột vào file `run_app.bat`**:
+- Script sẽ tự động tạo môi trường ảo `.venv` (nếu chưa có).
+- Tự động cài đặt đầy đủ các thư viện phụ thuộc từ `requirements.txt`.
+- Tự động mở giao diện phần mềm!
+
+---
+
+### Cách 2: Cài đặt và chạy bằng dòng lệnh (Dành cho mọi hệ điều hành)
+
+#### Bước 1: Clone dự án về máy tính
+```bash
+git clone <URL_REPOSITORY_CỦA_BẠN>
+cd DOC_BIEN_SO
+```
+
+#### Bước 2: Tạo và kích hoạt môi trường ảo (Virtual Environment)
+- **Trên Windows:**
+  ```powershell
+  python -m venv .venv
+  .venv\Scripts\activate
+  ```
+- **Trên macOS / Linux:**
+  ```bash
+  python3 -m venv .venv
+  source .venv/bin/activate
+  ```
+
+#### Bước 3: Cài đặt các thư viện cần thiết
+```bash
+pip install -r requirements.txt
+```
+
+#### Bước 4: Khởi chạy phần mềm
+
+1. **Mở giao diện người dùng đồ họa (GUI Desktop):**
+   ```bash
+   python main.py --gui
+   ```
+   *(Hoặc chỉ cần gõ `python main.py`)*
+
+2. **Nhận diện trên 1 ảnh bất kỳ:**
+   ```bash
+   python main.py --image samples/sample_car_hcm.jpg --show
+   ```
+
+3. **Nhận diện hàng loạt ảnh trong một thư mục:**
+   ```bash
+   python main.py --dir samples
+   ```
+
+4. **Nhận diện thời gian thực qua Webcam:**
+   ```bash
+   python main.py --webcam
+   ```
+   *(Bấm phím `q` trên cửa sổ webcam để thoát)*
+
+5. **Nhận diện trên file Video:**
+   ```bash
+   python main.py --video duong_dan_video.mp4
+   ```
+
+---
+
 ## 🛠️ Quy tắc Nhận diện & Chuẩn hóa Biển số Việt Nam
 
 Hệ thống nhận diện và chuẩn hóa 2 định dạng biển số xe tại Việt Nam:
